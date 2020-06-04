@@ -155,9 +155,7 @@ function svgToImg(svg, name) {
     img.id = "previewImg"
 
     img.onload = function () {
-        let hue2 = hue
-        if (hue2 == 360) hue2 = 720
-        ctx.filter = 'hue-rotate(' + hue2 / 2 + 'deg)';
+        ctx.filter = 'hue-rotate(' + hue + 'deg)';
         ctx.drawImage(img, 0, 0);
         pngLink = canvas.toDataURL("image/png");
         let imgSrcElem = d.getElementsByClassName("imgSrc")
