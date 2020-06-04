@@ -155,7 +155,9 @@ function svgToImg(svg, name) {
     img.id = "previewImg"
 
     img.onload = function () {
-        ctx.filter = 'hue-rotate(' + hue + 'deg)';
+        let hue2 = hue
+        if (hue2 == 360) hue2 = 720
+        ctx.filter = 'hue-rotate(' + hue2 / 2 + 'deg)';
         ctx.drawImage(img, 0, 0);
         pngLink = canvas.toDataURL("image/png");
         let imgSrcElem = d.getElementsByClassName("imgSrc")
@@ -180,7 +182,7 @@ function checkSettings(event) {
         case "click":
             if (settingsClosed == false) {
                 settingsClosed = true;
-                settings.style = "height: 80px; overflow: hidden;";
+                settings.style = "height: 78px; overflow: hidden;";
                 settingsH.innerHTML = "Show Settings";
             } else if (settingsClosed == true) {
                 settingsClosed = false;

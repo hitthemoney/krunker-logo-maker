@@ -25,12 +25,12 @@
         <div id="title">
             <span id="mainTitle" class="text">Krunker Logo Maker</span>
             <div id="topInfo">
-                <a href="https://hitthemoney.github.io">hitthemoney</a><span class="text"> |</span>
+                <a href="https://hitthemoney.github.io">hitthemoney</a><span class="text"> x </span><a href="https://hoodgail.github.io">Hoodgail</a><span class="text"> |</span>
                 <a style="cursor: pointer;" onclick="showChangelog()" id="version"></a>
             </div>
         </div>
     </div>
-    <div style="width: 100%; text-align: center; position: absolute; top: 130px; bottom: 0px">
+    <div style="width: 100%; text-align: center; position: absolute; top: 0px; bottom: 0px">
         <div id="cardSpace">
             <div id="card">
                 <svg viewBox="0 0 1280 720" id="svg" xmlns="http://www.w3.org/2000/svg" width="1280" height="720"
@@ -97,7 +97,7 @@
     <div id="settings">
         <h1 id="settingsHeader" onmouseout="checkSettings('out')" onmouseover="checkSettings('hover')"
             onclick="checkSettings('click')">Settings</h1>
-        <div class="settName" id="hue" title="">Color Hue <input type="number" class="sliderVal" id="hueInput" min="0"
+        <div class="settName" id="hue" title=""><span id="hueText">Color Hue </span><input type="number" class="sliderVal" id="hueInput" min="0"
                 max="360" value="0" onkeypress="d.getElementById('hueSlider').value = this.value; changeHue();"
                 style="margin-right: 0px;border-width:0px">
             <div class="slidecontainer">
