@@ -1,9 +1,14 @@
-1.0.0
+1.0.1
 
 Working On:
 - Adding more settings
 - Including ajustable text border width.
 - Better text box
+- Fixing Bugs
+
+Update v1.0.0:
+- Bug fixes
+- New UI (Thanks to Hoodgail!)
 
 Update v1.0.0:
 - Initial Release

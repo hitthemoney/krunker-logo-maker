@@ -146,8 +146,8 @@ function svgToImg(svg, name) {
     svg.style = `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg`;
 
     window.canvas = d.createElement("canvas");
-    canvas.width = 1280;
-    canvas.height = 720;
+    canvas.width = svg.getAttribute('width');
+    canvas.height = svg.getAttribute('height');
     var ctx = canvas.getContext("2d");
 
     window.img = d.createElement("img");
