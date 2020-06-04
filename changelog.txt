@@ -1,0 +1,9 @@
+1.0.0
+
+Working On:
+- Adding more settings
+- Including ajustable text border width.
+- Better text box
+
+Update v1.0.0:
+- Initial Release

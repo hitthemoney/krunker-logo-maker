@@ -1,0 +1,297 @@
+@font-face {
+    font-family: krunkerfont;
+    src: url('./font2.ttf');
+}
+
+html,
+body {
+    background-color: #6d6d6d;
+    padding: 0;
+    background-image: url(https://assets.krunker.io/textures/wall_0.png);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    margin: 0;
+    font-family: krunkerfont;
+    overflow: hidden;
+}
+
+#card {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translate(-50%);
+    height: 360px;
+}
+
+#settings {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    width: 360px;
+    height: 95%;
+    text-align: center;
+    overflow-y: auto;
+    background-color: rgba(238, 238, 238, 0.75);
+    border: solid 5px #fff;
+    border-radius: 15px;
+    word-wrap: break-word;
+}
+
+.settName {
+    float: left;
+    margin-left: 7px;
+    clear: both;
+    margin-top: 10px;
+    font-size: 22px;
+    color: rgba(0, 0, 0, .5)
+}
+
+.sliderM {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 60%;
+    height: 15px;
+    background-color: #a8a8a8;
+    outline: none;
+    border-radius: 4px
+}
+
+.sliderM::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 25px;
+    border-radius: 4px;
+    background: #2196f3;
+    cursor: pointer
+}
+
+.sliderM::-moz-range-thumb {
+    width: 15px;
+    height: 25px;
+    border-radius: 4px;
+    background: #2196f3;
+    cursor: pointer
+}
+
+.sliderVal {
+    font-family: "krunkerfont";
+    float: right;
+    position: relative;
+    width: 40px;
+    color: #fff;
+    line-height: 24px;
+    font-size: 18px;
+    text-align: center;
+    background: #2196f3;
+    padding: 5px 10px;
+    margin-left: 8px;
+    margin-right: -10px;
+    border-radius: 6px
+}
+
+#cardSpace {
+    left: 5px;
+    font-size: 50px;
+    font-family: krunkerfont;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#input {
+    padding-left: 10px;
+    font-size: 50px;
+    font-family: krunkerfont;
+    padding-top: 10px;
+    width: 475px;
+}
+
+#info {
+    position: absolute;
+    top: 375px;
+    font-family: krunkerfont;
+    padding-top: 10px;
+    width: 679px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+#downloadBtn {
+    position: relative;
+    bottom: 25px;
+    padding-top: 10px;
+    font-family: krunkerfont;
+    font-size: 23px;
+    height: 84px;
+    width: 160px;
+    border-radius: 15px;
+    border: 5px solid #fff;
+    background-color: #00ff00;
+    text-shadow: -1px -1px 0 #202020, 1px -1px 0 #202020, -1px 1px 0 #202020, 1px 1px 0 #202020, -2px -2px 0 #202020, 2px -2px 0 #202020, -2px 2px 0 #202020, 2px 2px 0 #202020;
+    color: #fff;
+}
+
+.sliderVal {
+    position: relative;
+    bottom: 5px;
+    left: 135px;
+}
+
+.sliderM {
+    position: relative;
+    bottom: 35px;
+    left: 138px;
+}
+
+#sizeSlider {
+    width: 57%;
+    left: 143px;
+    bottom: 65px;
+}
+
+#sizeText {
+    position: relative;
+    bottom: 30px;
+}
+
+#sizeInput {
+    bottom: 32px;
+    left: 132px;
+}
+
+#settingsHeader {
+    color: #101010
+}
+
+.switch {
+    float: right;
+    position: relative;
+    margin-bottom: 5px;
+    width: 65px;
+    height: 34px
+}
+
+.switch input {
+    display: none
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #a8a8a8;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 6px
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #fff;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 4px
+}
+
+input:checked+.slider {
+    background-color: #2196f3
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196f3
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px)
+}
+
+#boxText {
+    position: relative;
+    bottom: 60px;
+}
+
+#boxCheck {
+    position: relative;
+    bottom: 63px;
+    left: 150px;
+}
+
+#title {
+    display: block;
+    font-size: 1.9em;
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+#topInfo {
+    font-size: 0.65em !important;
+    display: block;
+    margin-top: 10px;
+}
+
+#top {
+    padding-top: 2px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .65);
+    width: 100%;
+    height: 115px;
+}
+
+#changelogHolder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    padding: 10px;
+    display: block;
+    margin: auto;
+    height: 300px;
+    width: 500px;
+    border: solid 5px white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .65);
+    overflow-y: scroll;
+}
+
+#changelog {
+    margin-top: 2px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    color: #fff;
+    text-align: left !important;
+}
+
+#popupBack {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    background-color: rgba(0, 0, 0, .65);
+}
+
+#topInfo a {
+    text-decoration: underline !important;
+    color: blue;
+}
