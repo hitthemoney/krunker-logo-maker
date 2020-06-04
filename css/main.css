@@ -48,8 +48,8 @@ body {
     /* transform: translateY(-50%); */
     text-align: center;
     overflow-y: auto;
-     backdrop-filter: blur(10px); 
-    background-color: rgba(0, 0, 0, 0.47);
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.35);
     /* border: solid 5px #fff; */
     border-radius: 6px;
     word-wrap: break-word;
@@ -314,6 +314,7 @@ input:checked+.slider:before {
 }
 
 #top {
+    position: relative;
     /* padding-top: 2px; */
     color: #fff;
     border-radius: 6px;
@@ -379,5 +380,5 @@ input:checked+.slider:before {
 
 #hueInput {
     position: relative;
-    left: 137px; 
+    left: 137px;
 }
