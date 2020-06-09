@@ -16,7 +16,7 @@ this.popups = ["changelog"];
 
 (async function () {
     var version = document.getElementById("version"),
-        changelog = await fetch("https://hitthemoney.github.io/krunker-logo-maker/changelog.txt"),
+        changelog = await fetch("https://hitthemoney.com/krunker-logo-maker/changelog.txt"),
         changelogText = await changelog.text(),
         changelog2 = document.getElementById("changelog")
     version.innerHTML = changelogText.slice(0, 6)
