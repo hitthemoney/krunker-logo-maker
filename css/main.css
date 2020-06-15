@@ -5,7 +5,7 @@
 
 html,
 body {
-    background-color: #6d6d6d;
+    background-color: #868686;
     padding: 0;
     background-image: url(https://assets.krunker.io/textures/wall_0.png);
     background-repeat: repeat;
@@ -16,7 +16,7 @@ body {
     margin: 0;
     font-family: krunkerfont;
     overflow: hidden;
-    animation: animatedBackground 10s linear infinite;
+    animation: animatedBackground 10s linear infinite; 
 }
 
 @keyframes animatedBackground {
@@ -44,10 +44,12 @@ body {
     /* top: 34%; */
     margin: 10px;
     width: 282.5px;
-    height: min-content;
+    /*height: min-content;*/
+    height: 300px;
     /* transform: translateY(-50%); */
     text-align: center;
     overflow-y: auto;
+    overflow-x: hidden; 
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.35);
     /* border: solid 5px #fff; */
@@ -226,6 +228,7 @@ body {
 }
 
 #settingsHeader {
+    cursor: pointer;
     margin-top: 20px;
     margin-bottom: 35px;
     font-size: 1.65em;
@@ -382,3 +385,102 @@ input:checked+.slider:before {
     position: relative;
     left: 137px;
 }
+
+#strokeSlider {
+    width: 60%;
+    left: 125px;
+    bottom: 130px;
+}
+
+#strokeText {
+    position: relative;
+    bottom: 113px;
+    left: 2px;
+}
+
+#strokeInput {
+    bottom: 115px;
+    left: 113px;
+}
+
+#iconInput, #iconInput input {
+    position: relative;
+    font-family: krunkerFont !important;
+    bottom: 163px;
+    left: 75px;
+}
+
+#iconText {
+    float: left;
+    position: relative;
+    bottom: 144px;
+    left: 2px;
+}
+
+#iconSSlider {
+    width: 97%;
+    left: 91px;
+    bottom: 196px;
+}
+
+#iconSText {
+    position: relative;
+    bottom: 180px;
+    left: 2px;
+}
+
+#iconSInput {
+    bottom: 181px;
+    left: 136px;
+}
+
+#iconCSlider {
+    width: 97%;
+    left: 91px;
+    bottom: 196px;
+}
+
+#iconCText {
+    position: relative;
+    bottom: 212px;
+    left: 2px;
+}
+
+#iconCInputX {
+    bottom: 215px;
+    left: -70px;
+}
+
+#iconCInputY {
+    bottom: 215px;
+    left: 47px;
+}
+
+#iconCTextY {
+    position: relative;
+    bottom: 212px;
+    left: 49px;
+}
+
+#iconHueSlider {
+    width: 99%;
+    left: 86px;
+    bottom: 246px;
+}
+
+#iconHueText {
+    position: relative;
+    bottom: 230px;
+    left: -5px;
+}
+
+#iconHueInput {
+    bottom: 231px;
+    left: 136px;
+}
+
+/*
+* {
+    display: none;
+}
+*/

@@ -9,8 +9,12 @@ var usernamePathBG = d.getElementById("usernamePathBG"),
     topWings = d.getElementById("topWings"),
     topWings2 = d.getElementById("topWings2"),
     settingsH = d.getElementById("settingsHeader"),
-    settings = d.getElementById("settings");
+    settings = d.getElementById("settings"),
+    iconInput = d.getElementById("iconInput"),
+    krunkerWings = d.getElementById("krunkerWings"),
+    krunkerWingsIcon = d.getElementById("krunkerWingsIcon");
 this.hue = 0;
+this.iconHue = 0;
 this.settingsClosed = false;
 this.popups = ["changelog"];
 
@@ -108,12 +112,22 @@ updatePreview = () => {
 }
 
 changeHue = () => {
-    setTimeout(() => {
+    //setTimeout(() => {
         this.hue = d.getElementById("hueInput").value
         d.getElementById("svg").style =
             `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg)`
+        krunkerWingsIcon.style.filter =
+            `hue-rotate(${this.iconHue - this.hue}deg)`
         svgToImg(d.getElementById("svg"), input.value);
-    }, 1);
+    //}, 1);
+}
+
+changeStroke = () => {
+    //setTimeout(() => {
+        this.strokeW = d.getElementById("strokeInput").value
+        d.getElementById("usernameBG").setAttribute("stroke-width", `${strokeW*2}px`)
+        svgToImg(d.getElementById("svg"), input.value);
+    //}, 1);
 }
 
 changeSize = () => {
@@ -145,7 +159,7 @@ function svgToImg(svg, name) {
     var svgData = new XMLSerializer().serializeToString(svg);
     svg.style = `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg`;
 
-    window.canvas = d.createElement("canvas");
+    window.canvas = d.getElementById("canvas") //createElement("canvas");
     canvas.width = svg.getAttribute('width');
     canvas.height = svg.getAttribute('height');
     var ctx = canvas.getContext("2d");
@@ -157,7 +171,7 @@ function svgToImg(svg, name) {
     img.onload = function () {
         let hue2 = hue
         if (hue2 == 360) hue2 = 720
-        ctx.filter = 'hue-rotate(' + hue2 / 2 + 'deg)';
+        //ctx.filter = 'hue-rotate(' + hue2 / 2 + 'deg)';
         ctx.drawImage(img, 0, 0);
         pngLink = canvas.toDataURL("image/png");
         let imgSrcElem = d.getElementsByClassName("imgSrc")
@@ -211,4 +225,82 @@ function hidePopup() {
     clearInterval(this.interval);
     for (num = 0; num < popups.length; num++) document.getElementById(popups[num] + "Holder").style.display = "none"
     document.getElementById("popupHolder").style.display = "none"
+}
+
+function blobToDataURL(blob, callback) {
+    var fr = new FileReader();
+    fr.onload = function (e) {
+        callback(e.target.result);
+    }
+    fr.readAsDataURL(blob);
+}
+
+iconInput.addEventListener('change', function () {
+    changeIcon(this.files);
+}, false);
+
+changeIcon = (files) => {
+    let icon = files[0]
+    //let iconUrl = URL.createObjectURL(icon)
+    blobToDataURL(icon, function (dataUrl) {
+        //console.log(dataUrl);
+        d.getElementById("iconSInput").style.cursor = "initial";
+        d.getElementById('iconSSlider').style.cursor = "initial";
+        d.getElementById("iconHueInput").style.cursor = "initial";
+        d.getElementById('iconHueSlider').style.cursor = "initial";
+        d.getElementById("iconCInputX").style.cursor = "initial";
+        d.getElementById('iconCInputY').style.cursor = "initial";
+        this.iconChanged = true
+        krunkerWings.href.baseVal = wingsNoIcon
+        krunkerWings.href.animVal = wingsNoIcon
+        krunkerWingsIcon.style.display = ""
+        krunkerWingsIcon.src = dataUrl
+        //krunkerWingsIcon.href.animVal = dataUrl
+        //krunkerWingsIcon.href.baseVal = dataUrl
+    });
+}
+
+changeIconScale = () => {
+    let value = d.getElementById("iconSInput").value
+    if (this.iconChanged == true) {
+        /*let x = 541.5 * (1 - (value - 1)) //541.5 - (value * 100 * (1 + ((value - 1)/2)));
+        console.log(x)*/
+        let y = 240 + (100 * (1 + (1 - value))); //240 + (100 * ((1 + (1 - value)) * value)); //240 + (100 * (1 + (1 - value))); //340
+        if (value > 1) {
+            y = 240 + (100 * ((1 + (1 - value)) * value));
+        }
+        krunkerWingsIcon.style.transform = `scale(${value})`
+        krunkerWingsIcon.style.transformOrigin = "center"
+        //krunkerWingsIcon.setAttribute("x", x)
+        d.getElementById('iconCInputY').value = y;
+        krunkerWingsIcon.setAttribute("y", y)
+    } else {
+        d.getElementById("iconSInput").value = 1;
+        d.getElementById('iconSSlider').value = 1;
+    }
+}
+
+changeIconCords = (xy) => {
+    if (this.iconChanged == true) {
+        if (xy == "x") {
+            //krunkerWingsIcon.setAttribute("x", d.getElementById('iconCInputX').value)
+            krunkerWingsIcon.style.left = d.getElementById('iconCInputX').value + "px"
+        } else if (xy == "y") {
+            //krunkerWingsIcon.setAttribute("y", d.getElementById('iconCInputY').value)
+            krunkerWingsIcon.style.top = d.getElementById('iconCInputY').value + "px"
+        }
+    } else {
+        d.getElementById('iconCInputX').value = 541.5
+        d.getElementById('iconCInputY').value = 340
+    }
+}
+
+changeIconHue = () => {
+    if (this.iconChanged == true) {
+        this.iconHue = d.getElementById("iconHueInput").value
+        krunkerWingsIcon.style.filter = `hue-rotate(${iconHue - this.hue}deg)`
+    } else {
+        d.getElementById("iconHueInput").value = 0;
+        d.getElementById("iconHueSlider").value = 0;
+    }
 }

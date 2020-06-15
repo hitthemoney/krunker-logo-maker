@@ -1,10 +1,15 @@
-1.0.1
+1.1.0
 
 Working On:
 - Adding more settings
-- Including ajustable text border width.
 - Better text box
 - Fixing Bugs
+
+Update v1.1.0:
+- Fixed hue Bug
+- Added stroke width (currently buggy in the preview)
+- Added an icon image (replaces the skull on the logo with your own image)
+- Added icon scale, icon positioning, and icon hue
 
 Update v1.0.0:
 - Bug fixes
