@@ -11,7 +11,7 @@ Update v1.1.0:
 - Added an icon image (replaces the skull on the logo with your own image)
 - Added icon scale, icon positioning, and icon hue
 
-Update v1.0.0:
+Update v1.0.1:
 - Bug fixes
 - New UI (Thanks to Hoodgail!)
 
