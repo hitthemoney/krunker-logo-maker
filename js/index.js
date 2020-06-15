@@ -255,6 +255,7 @@ changeIcon = (files) => {
         krunkerWings.href.animVal = wingsNoIcon
         krunkerWingsIcon.style.display = ""
         krunkerWingsIcon.src = dataUrl
+        svgToImg(document.getElementById("svg"), input.value);
         //krunkerWingsIcon.href.animVal = dataUrl
         //krunkerWingsIcon.href.baseVal = dataUrl
     });
@@ -274,6 +275,7 @@ changeIconScale = () => {
         //krunkerWingsIcon.setAttribute("x", x)
         d.getElementById('iconCInputY').value = y;
         krunkerWingsIcon.setAttribute("y", y)
+        svgToImg(document.getElementById("svg"), input.value);
     } else {
         d.getElementById("iconSInput").value = 1;
         d.getElementById('iconSSlider').value = 1;
@@ -289,6 +291,7 @@ changeIconCords = (xy) => {
             //krunkerWingsIcon.setAttribute("y", d.getElementById('iconCInputY').value)
             krunkerWingsIcon.style.top = d.getElementById('iconCInputY').value + "px"
         }
+        svgToImg(document.getElementById("svg"), input.value);
     } else {
         d.getElementById('iconCInputX').value = 541.5
         d.getElementById('iconCInputY').value = 340
@@ -299,6 +302,7 @@ changeIconHue = () => {
     if (this.iconChanged == true) {
         this.iconHue = d.getElementById("iconHueInput").value
         krunkerWingsIcon.style.filter = `hue-rotate(${iconHue - this.hue}deg)`
+        svgToImg(document.getElementById("svg"), input.value);
     } else {
         d.getElementById("iconHueInput").value = 0;
         d.getElementById("iconHueSlider").value = 0;

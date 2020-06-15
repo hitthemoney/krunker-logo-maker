@@ -1,17 +1,20 @@
-1.1.0
+1.1.1
 
 Working On:
 - Adding more settings
 - Better text box
 - Fixing Bugs
 
+Update v1.1.1:
+- Fixed png not updating after loading an icon
+
 Update v1.1.0:
-- Fixed hue Bug
+- Fixed hue bug
 - Added stroke width (currently buggy in the preview)
 - Added an icon image (replaces the skull on the logo with your own image)
 - Added icon scale, icon positioning, and icon hue
 
-Update v1.0.1:
+Update v1.0.0:
 - Bug fixes
 - New UI (Thanks to Hoodgail!)
 
