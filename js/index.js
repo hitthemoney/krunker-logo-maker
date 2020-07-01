@@ -32,7 +32,7 @@ this.season = "2";
 })();
 
 svgToImg(document.getElementById("svg"), "YOURNAME");
-updatePreview = () => {
+updatePreview = (updateText) => {
     setTimeout(() => {
         usernamePath.textContent = input.value.toUpperCase();
         usernamePathBG.textContent = input.value.toUpperCase();
@@ -43,80 +43,83 @@ updatePreview = () => {
         document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal / (_3dVal / 20)).toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace(_3dVal.toString() + "px", (_3dVal / 2.5).toString() + "px");
         svgToImg(document.getElementById("svg"), input.value);
         document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
-        let usernameBBox = usernamePath.getBBox();
-        let width = usernameBBox.width
-        let boxWidth = width + 5
-        let topCurve = boxWidth / 2
-        let startingPoint = 640 - topCurve
-        if (width >= 1280) document.getElementById("svg").setAttribute("width", `${width + 25}`)
-        else document.getElementById("svg").setAttribute("width", `1280`)
-        if (boxWidth >= 1280) {
-            textPath.setAttribute("d", `M 0 360 q ${width / 2} ${(width / 2) * 0.15625} ${width} 0`)
-            textHolder.setAttribute("transform", "translate(96 54) scale(0.85)")
-            topWings.setAttribute("stroke-width", "20")
-            d.getElementById('sizeSlider').value = 0.85;
-            d.getElementById('sizeInput').value = 0.85
-        } else if (720 <= boxWidth && boxWidth <= 1280) {
-            textHolder.setAttribute("transform", "translate(0 7) scale(1)")
-            topWings.setAttribute("stroke-width", "20")
-            d.getElementById('sizeSlider').value = 1;
-            d.getElementById('sizeInput').value = 1;
-        } else if (480 <= boxWidth && boxWidth <= 720) {
-            textHolder.setAttribute("transform", "translate(-96 -45) scale(1.15)")
-            topWings.setAttribute("stroke-width", "20")
-            d.getElementById('sizeSlider').value = 1.15;
-            d.getElementById('sizeInput').value = 1.15;
-        } else if (boxWidth <= 480) {
-            textHolder.setAttribute("transform", "translate(-192 -95) scale(1.3)")
-            topWings.setAttribute("stroke-width", "30")
-            d.getElementById('sizeSlider').value = 1.3;
-            d.getElementById('sizeInput').value = 1.3;
-        } else {
-            textHolder.setAttribute("transform", "translate(0 7) scale(1)")
-            topWings.setAttribute("stroke-width", "40")
-            d.getElementById('sizeSlider').value = 1;
-            d.getElementById('sizeInput').value = 1;
-        }
-        if (startingPoint >= 130) {
-            let num = 0
-            if (usernamePath.textContent.slice(0, 1).toLowerCase() == "j") num = 38
-            boxWidth = width - 100 - num
-            topCurve = boxWidth / 2
-            startingPoint = 640 - topCurve
-            pathBG.setAttribute("d",
-                `M ${startingPoint} ${245 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
-            )
-            textPath.setAttribute("d",
-                `M 0 360 q 640 -100 1280 0`
-            )
-            //`M 0 380 q 640 -100 1280 0`
-            topWings.style.display = "none"
-        } else {
-            topWings.style.display = ""
-            topWings.setAttribute("d",
-                `M 130 350 q 445 -69.53125 1022 0`
-            )
-            boxWidth = width - 100
-            topCurve = boxWidth / 2
-            startingPoint = 640 - topCurve
-            pathBG.setAttribute("d",
-                `M ${startingPoint} ${225 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
-            )
-            var height = 360 - (_3dVal / 5)
-            textPath.setAttribute("d",
-                `M 0 ${height} q 640 -100 1280 0`
-            )
-        }
-        boxWidth = width + 5
-        if (boxWidth >= 1280) {
-            topWings2.style.display = ""
-            textPath.setAttribute("d",
-                `M -${(width - 1280) / 2} 360 q ${width / 2} -${(width / 2) * 0.15625} ${width} 0`
-            )
-        } else {
-            topWings2.style.display = "none"
+        if (updateText !== false) {
+            let usernameBBox = usernamePath.getBBox();
+            let width = usernameBBox.width
+            let boxWidth = width + 5
+            let topCurve = boxWidth / 2
+            let startingPoint = 640 - topCurve
+            if (width >= 1280) document.getElementById("svg").setAttribute("width", `${width + 25}`)
+            else document.getElementById("svg").setAttribute("width", `1280`)
+            if (boxWidth >= 1280) {
+                textPath.setAttribute("d", `M 0 360 q ${width / 2} ${(width / 2) * 0.15625} ${width} 0`)
+                textHolder.setAttribute("transform", "translate(96 54) scale(0.85)")
+                topWings.setAttribute("stroke-width", "20")
+                d.getElementById('sizeSlider').value = 0.85;
+                d.getElementById('sizeInput').value = 0.85
+            } else if (720 <= boxWidth && boxWidth <= 1280) {
+                textHolder.setAttribute("transform", "translate(0 7) scale(1)")
+                topWings.setAttribute("stroke-width", "20")
+                d.getElementById('sizeSlider').value = 1;
+                d.getElementById('sizeInput').value = 1;
+            } else if (480 <= boxWidth && boxWidth <= 720) {
+                textHolder.setAttribute("transform", "translate(-96 -45) scale(1.15)")
+                topWings.setAttribute("stroke-width", "20")
+                d.getElementById('sizeSlider').value = 1.15;
+                d.getElementById('sizeInput').value = 1.15;
+            } else if (boxWidth <= 480) {
+                textHolder.setAttribute("transform", "translate(-192 -95) scale(1.3)")
+                topWings.setAttribute("stroke-width", "30")
+                d.getElementById('sizeSlider').value = 1.3;
+                d.getElementById('sizeInput').value = 1.3;
+            } else {
+                textHolder.setAttribute("transform", "translate(0 7) scale(1)")
+                topWings.setAttribute("stroke-width", "40")
+                d.getElementById('sizeSlider').value = 1;
+                d.getElementById('sizeInput').value = 1;
+            }
+            if (startingPoint >= 130) {
+                let num = 0
+                if (usernamePath.textContent.slice(0, 1).toLowerCase() == "j") num = 38
+                boxWidth = width - 100 - num
+                topCurve = boxWidth / 2
+                startingPoint = 640 - topCurve
+                pathBG.setAttribute("d",
+                    `M ${startingPoint} ${245 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
+                )
+                textPath.setAttribute("d",
+                    `M 0 360 q 640 -100 1280 0`
+                )
+                //`M 0 380 q 640 -100 1280 0`
+                topWings.style.display = "none"
+            } else {
+                topWings.style.display = ""
+                topWings.setAttribute("d",
+                    `M 130 350 q 445 -69.53125 1022 0`
+                )
+                boxWidth = width - 100
+                topCurve = boxWidth / 2
+                startingPoint = 640 - topCurve
+                pathBG.setAttribute("d",
+                    `M ${startingPoint} ${225 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
+                )
+                var height = 360 - (_3dVal / 5)
+                textPath.setAttribute("d",
+                    `M 0 ${height} q 640 -100 1280 0`
+                )
+            }
+            boxWidth = width + 5
+            if (boxWidth >= 1280) {
+                topWings2.style.display = ""
+                textPath.setAttribute("d",
+                    `M -${(width - 1280) / 2} 360 q ${width / 2} -${(width / 2) * 0.15625} ${width} 0`
+                )
+            } else {
+                topWings2.style.display = "none"
+            }
         }
     }, 1);
+
 }
 
 changeHue = () => {
