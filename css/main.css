@@ -49,7 +49,7 @@ body {
     /* transform: translateY(-50%); */
     text-align: center;
     overflow-y: auto;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.35);
     /* border: solid 5px #fff; */
@@ -60,10 +60,10 @@ body {
 
 .settName {
     float: left;
-    margin-bottom: 16px;
+    margin-bottom: 0px;
     margin-left: 7px;
     clear: both;
-    margin-top: 10px;
+    margin-top: 0px;
     font-size: 13px;
     /*text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);*/
     color: rgba(255, 255, 255, 0.5);
@@ -105,7 +105,7 @@ body {
     color: #fff;
     position: relative;
     bottom: 21px;
-    left: 143px;
+    left: 130px;
     font-size: 10px;
     display: block;
     height: 10px;
@@ -156,6 +156,7 @@ body {
 }
 
 #downloadBtn:hover,
+.download:hover,
 #input:hover,
 #top:hover {
     outline: none;
@@ -167,7 +168,8 @@ body {
     transform: translateY(-6px)
 }
 
-#downloadBtn:active {
+#downloadBtn:active,
+.download {
     transform: translateY(-5px);
     outline: none;
 }
@@ -177,7 +179,8 @@ body {
     transition: all 0.5s;
 }
 
-#downloadBtn {
+#downloadBtn,
+.download {
     outline: none;
     /* position: relative; */
     /* bottom: 25px; */
@@ -199,38 +202,21 @@ body {
 .sliderVal {
     position: relative;
     bottom: 21px;
-    left: 143px;
+    left: 132px;
     font-size: 10px;
 }
 
 .sliderM {
     position: relative;
     bottom: 35px;
-    left: 138px;
+    left: 110px;
     display: block;
-}
-
-#sizeSlider {
-    width: 80%;
-    left: 100px;
-    bottom: 63px;
-}
-
-#sizeText {
-    position: relative;
-    bottom: 45px;
-    left: 2px;
-}
-
-#sizeInput {
-    bottom: 50px;
-    left: 135px;
 }
 
 #settingsHeader {
     cursor: pointer;
     margin-top: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 45px;
     font-size: 1.65em;
     color: #fff;
 }
@@ -287,18 +273,6 @@ input:checked+.slider:before {
     -webkit-transform: translateX(16px);
     -ms-transform: translateX(16px);
     transform: translateX(16px)
-}
-
-#boxText {
-    position: relative;
-    bottom: 75px;
-    left: 2px;
-}
-
-#boxCheck {
-    position: relative;
-    bottom: 79px;
-    left: 150px;
 }
 
 #title {
@@ -371,116 +345,94 @@ input:checked+.slider:before {
     color: #2196f3;
 }
 
-#hueText {
-    position: relative;
-    bottom: 15px;
-}
-
-#hueSlider {
-    width: 80%;
-    left: 100px;
-}
-
-#hueInput {
-    position: relative;
-    left: 137px;
-}
-
-#strokeSlider {
-    width: 60%;
-    left: 125px;
-    bottom: 130px;
-}
-
-#strokeText {
-    position: relative;
-    bottom: 113px;
-    left: 2px;
-}
-
-#strokeInput {
-    bottom: 115px;
-    left: 113px;
-}
-
-#iconInput, #iconInput input {
-    position: relative;
-    font-family: krunkerFont !important;
-    bottom: 163px;
-    left: 75px;
-}
-
-#iconText {
-    float: left;
-    position: relative;
-    bottom: 144px;
-    left: 2px;
-}
-
-#iconSSlider {
-    width: 97%;
-    left: 91px;
-    bottom: 196px;
-}
-
-#iconSText {
-    position: relative;
-    bottom: 180px;
-    left: 2px;
-}
-
-#iconSInput {
-    bottom: 181px;
-    left: 136px;
-}
-
-#iconCSlider {
-    width: 97%;
-    left: 91px;
-    bottom: 196px;
-}
-
-#iconCText {
-    position: relative;
-    bottom: 212px;
-    left: 2px;
-}
-
-#iconCInputX {
-    bottom: 215px;
-    left: -70px;
-}
-
-#iconCInputY {
-    bottom: 215px;
-    left: 47px;
-}
-
-#iconCTextY {
-    position: relative;
-    bottom: 212px;
-    left: 49px;
-}
-
-#iconHueSlider {
-    width: 99%;
-    left: 86px;
-    bottom: 246px;
-}
-
-#iconHueText {
-    position: relative;
-    bottom: 230px;
-    left: -5px;
-}
-
-#iconHueInput {
-    bottom: 231px;
-    left: 136px;
-}
-
 /*
 * {
     display: none;
 }
 */
+
+.settingText {
+    position: relative;
+    bottom: 15px;
+}
+
+#iconInput,
+#iconInput input {
+    position: relative;
+    font-family: krunkerFont !important;
+    bottom: 35px;
+    left: 75px;
+}
+
+#iconText {
+    float: left;
+}
+
+#boxCheck {
+    margin-top: -15px;
+    margin-bottom: 15px;
+}
+
+#iconHue {
+    margin-left: 0px;
+    margin-top: 10px;
+}
+
+#iconCInputX,
+#iconCInputY {
+    display: inline-block;
+    float: none;
+    left: -5px;
+    top: -20px
+}
+
+#hue {
+    margin-left: 4px;
+}
+
+#strokeSlider {
+    width: 70%;
+}
+
+#strokeInput {
+    left: 113px;
+}
+
+#_3dWidthInput {
+    display: inline-block;
+    float: none;
+    left: -5px;
+    top: -17.5px
+}
+
+#downloadHolder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    padding: 10px;
+    display: block;
+    margin: auto;
+    height: max-content;
+    width: max-content;
+    /*border: solid 5px white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .65);
+    overflow-y: scroll;*/
+}
+
+.download {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+
+#seasonText {
+    display: inline-block;
+    margin-top: 8px;
+}
+
+#season {
+    position: relative;
+    bottom: 16px;
+    font-family: krunkerfont;
+}

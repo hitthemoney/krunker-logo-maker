@@ -16,7 +16,11 @@ var usernamePathBG = d.getElementById("usernamePathBG"),
 this.hue = 0;
 this.iconHue = 0;
 this.settingsClosed = false;
-this.popups = ["changelog"];
+this.popups = ["changelog", "download"];
+this._3dVal = 50;
+this.season = "2";
+
+;
 
 (async function () {
     var version = document.getElementById("version"),
@@ -25,7 +29,7 @@ this.popups = ["changelog"];
         changelog2 = document.getElementById("changelog")
     version.innerHTML = changelogText.slice(0, 6)
     changelog2.innerHTML = changelogText
-})()
+})();
 
 svgToImg(document.getElementById("svg"), "YOURNAME");
 updatePreview = () => {
@@ -36,7 +40,9 @@ updatePreview = () => {
             usernamePath.textContent = "YOURNAME";
             usernamePathBG.textContent = "YOURNAME";
         }
+        document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal / (_3dVal / 20)).toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace(_3dVal.toString() + "px", (_3dVal / 2.5).toString() + "px");
         svgToImg(document.getElementById("svg"), input.value);
+        document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
         let usernameBBox = usernamePath.getBBox();
         let width = usernameBBox.width
         let boxWidth = width + 5
@@ -81,8 +87,9 @@ updatePreview = () => {
                 `M ${startingPoint} ${245 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
             )
             textPath.setAttribute("d",
-                `M 0 380 q 640 -100 1280 0`
+                `M 0 360 q 640 -100 1280 0`
             )
+            //`M 0 380 q 640 -100 1280 0`
             topWings.style.display = "none"
         } else {
             topWings.style.display = ""
@@ -95,8 +102,9 @@ updatePreview = () => {
             pathBG.setAttribute("d",
                 `M ${startingPoint} ${225 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
             )
+            var height = 360 - (_3dVal / 5)
             textPath.setAttribute("d",
-                `M 0 360 q 640 -100 1280 0`
+                `M 0 ${height} q 640 -100 1280 0`
             )
         }
         boxWidth = width + 5
@@ -113,20 +121,20 @@ updatePreview = () => {
 
 changeHue = () => {
     //setTimeout(() => {
-        this.hue = d.getElementById("hueInput").value
-        d.getElementById("svg").style =
-            `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg)`
-        krunkerWingsIcon.style.filter =
-            `hue-rotate(${this.iconHue - this.hue}deg)`
-        svgToImg(d.getElementById("svg"), input.value);
+    this.hue = d.getElementById("hueInput").value
+    d.getElementById("svg").style =
+        `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg)`
+    krunkerWingsIcon.style.filter =
+        `hue-rotate(${this.iconHue - this.hue}deg)`
+    svgToImg(d.getElementById("svg"), input.value);
     //}, 1);
 }
 
 changeStroke = () => {
     //setTimeout(() => {
-        this.strokeW = d.getElementById("strokeInput").value
-        d.getElementById("usernameBG").setAttribute("stroke-width", `${strokeW*2}px`)
-        svgToImg(d.getElementById("svg"), input.value);
+    this.strokeW = d.getElementById("strokeInput").value
+    d.getElementById("usernameBG").setAttribute("stroke-width", `${strokeW*2}px`)
+    svgToImg(d.getElementById("svg"), input.value);
     //}, 1);
 }
 
@@ -157,6 +165,8 @@ changeSize = () => {
 function svgToImg(svg, name) {
     svg.style = `transform: scale(1); filter: hue-rotate(${hue}deg)`;
     var svgData = new XMLSerializer().serializeToString(svg);
+    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
+    var svgData2 = new XMLSerializer().serializeToString(svg);
     svg.style = `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg`;
 
     window.canvas = d.getElementById("canvas") //createElement("canvas");
@@ -165,7 +175,8 @@ function svgToImg(svg, name) {
     var ctx = canvas.getContext("2d");
 
     window.img = d.createElement("img");
-    img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData))));
+    let svgDataUrl = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+    img.setAttribute("src", svgDataUrl);
     img.id = "previewImg"
 
     img.onload = function () {
@@ -176,8 +187,14 @@ function svgToImg(svg, name) {
         pngLink = canvas.toDataURL("image/png");
         let imgSrcElem = d.getElementsByClassName("imgSrc")
         for (num = 0; num < imgSrcElem.length; num++) imgSrcElem[num]["content"] = pngLink
-        d.getElementById("download").download = `${name}'s_Krunker_Logo.PNG`;
-        d.getElementById("download").href = pngLink;
+        d.getElementById("downloadPng").download = `${name}'s_Krunker_Logo.PNG`;
+        d.getElementById("downloadPng").href = pngLink;
+
+        d.getElementById("downloadJpg").download = `${name}'s_Krunker_Logo.JPG`;
+        d.getElementById("downloadJpg").href = canvas.toDataURL("image/jpeg");
+
+        d.getElementById("downloadSvg").download = `${name}'s_Krunker_Logo.SVG`;
+        d.getElementById("downloadSvg").href = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData2)));
     };
 };
 
@@ -251,8 +268,13 @@ changeIcon = (files) => {
         d.getElementById("iconCInputX").style.cursor = "initial";
         d.getElementById('iconCInputY').style.cursor = "initial";
         this.iconChanged = true
-        krunkerWings.href.baseVal = wingsNoIcon
-        krunkerWings.href.animVal = wingsNoIcon
+        if (season == "2") {
+            krunkerWings.href.baseVal = wingsNoIcon
+            krunkerWings.href.animVal = wingsNoIcon
+        } else if (season == "3") {
+            krunkerWings.href.animVal = wingsS3NoIcon
+            krunkerWings.href.baseVal = wingsS3NoIcon
+        }
         krunkerWingsIcon.style.display = ""
         krunkerWingsIcon.src = dataUrl
         svgToImg(document.getElementById("svg"), input.value);
@@ -306,5 +328,48 @@ changeIconHue = () => {
     } else {
         d.getElementById("iconHueInput").value = 0;
         d.getElementById("iconHueSlider").value = 0;
+    }
+}
+
+update3dWidth = (id) => {
+    setTimeout(() => {
+        var elem = document.getElementById(id)
+        document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (elem.value).toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace(_3dVal.toString() + "px", (elem.value).toString()  + "px");
+        this._3dVal = elem.value;
+    }, 1);
+}
+
+downloadImage = (format) => {
+    document.getElementById("download" + format).click();
+}
+
+function showDownloadPopup() {
+    let downloadHolder = document.getElementById("downloadHolder");
+    downloadHolder.style.display = "block";
+    document.getElementById("popupHolder").style.display = "block";
+}
+
+function changeSeason(val) {
+
+    //krunkerWings.href.baseVal = wingsNoIcon
+    //krunkerWings.href.animVal = wingsNoIcon
+
+    this.season = val;
+    if (val == "2") {
+        if (krunkerWingsIcon.src == document.URL) {
+            krunkerWings.href.animVal = wingsWithIcon
+            krunkerWings.href.baseVal = wingsWithIcon
+        } else {
+            krunkerWings.href.animVal = wingsNoIcon
+            krunkerWings.href.baseVal = wingsNoIcon
+        }
+    } else if (val == "3") {
+        if (krunkerWingsIcon.src == document.URL) {
+            krunkerWings.href.animVal = wingsS3WithIcon
+            krunkerWings.href.baseVal = wingsS3WithIcon
+        } else {
+            krunkerWings.href.animVal = wingsS3NoIcon
+            krunkerWings.href.baseVal = wingsS3NoIcon
+        }
     }
 }

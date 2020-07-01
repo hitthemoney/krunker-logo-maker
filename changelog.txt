@@ -1,9 +1,15 @@
-1.1.1
+1.2.0
 
 Working On:
 - Adding more settings
 - Better text box
 - Fixing Bugs
+
+Update v1.2.0:
+- Added a drop shadow text option
+- Added the ability to download as SVG and JPEG (JPEG is not recommended)
+- Added the ability to make "season 3" logos
+- Redid the settings css
 
 Update v1.1.1:
 - Fixed png not updating after loading an icon
