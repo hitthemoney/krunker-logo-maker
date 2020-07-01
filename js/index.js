@@ -13,12 +13,13 @@ var usernamePathBG = d.getElementById("usernamePathBG"),
     iconInput = d.getElementById("iconInput"),
     krunkerWings = d.getElementById("krunkerWings"),
     krunkerWingsIcon = d.getElementById("krunkerWingsIcon");
-this.hue = 0;
-this.iconHue = 0;
-this.settingsClosed = false;
-this.popups = ["changelog", "download"];
-this._3dVal = 50;
-this.season = "2";
+window.hue = 0;
+window.iconHue = 0;
+window.settingsClosed = false;
+window.popups = ["changelog", "download"];
+window._3dVal = 50;
+window.season = "2";
+window.heightOffset = 0;
 
 ;
 
@@ -87,8 +88,10 @@ updatePreview = (updateText) => {
                 pathBG.setAttribute("d",
                     `M ${startingPoint} ${245 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
                 )
+                var height = (380 - (_3dVal / 5)) + window.heightOffset
+                //console.log(height)
                 textPath.setAttribute("d",
-                    `M 0 360 q 640 -100 1280 0`
+                    `M 0 ${height} q 640 -100 1280 0`
                 )
                 //`M 0 380 q 640 -100 1280 0`
                 topWings.style.display = "none"
@@ -103,7 +106,7 @@ updatePreview = (updateText) => {
                 pathBG.setAttribute("d",
                     `M ${startingPoint} ${225 + (topCurve * slope) / 2} q ${topCurve} -${topCurve * slope} ${1280 - startingPoint * 2} 0`
                 )
-                var height = 360 - (_3dVal / 5)
+                var height = (360 - (_3dVal / 5)) + window.heightOffset
                 textPath.setAttribute("d",
                     `M 0 ${height} q 640 -100 1280 0`
                 )
@@ -124,18 +127,18 @@ updatePreview = (updateText) => {
 
 changeHue = () => {
     //setTimeout(() => {
-    this.hue = d.getElementById("hueInput").value
+    window.hue = d.getElementById("hueInput").value
     d.getElementById("svg").style =
         `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg)`
     krunkerWingsIcon.style.filter =
-        `hue-rotate(${this.iconHue - this.hue}deg)`
+        `hue-rotate(${window.iconHue - window.hue}deg)`
     svgToImg(d.getElementById("svg"), input.value);
     //}, 1);
 }
 
 changeStroke = () => {
     //setTimeout(() => {
-    this.strokeW = d.getElementById("strokeInput").value
+    window.strokeW = d.getElementById("strokeInput").value
     d.getElementById("usernameBG").setAttribute("stroke-width", `${strokeW*2}px`)
     svgToImg(d.getElementById("svg"), input.value);
     //}, 1);
@@ -143,7 +146,7 @@ changeStroke = () => {
 
 changeSize = () => {
     setTimeout(() => {
-        this.size = d.getElementById("sizeInput").value
+        window.size = d.getElementById("sizeInput").value
         var x,
             y;
         if (size > 1) {
@@ -242,7 +245,7 @@ function showChangelog() {
 }
 
 function hidePopup() {
-    clearInterval(this.interval);
+    clearInterval(window.interval);
     for (num = 0; num < popups.length; num++) document.getElementById(popups[num] + "Holder").style.display = "none"
     document.getElementById("popupHolder").style.display = "none"
 }
@@ -256,7 +259,7 @@ function blobToDataURL(blob, callback) {
 }
 
 iconInput.addEventListener('change', function () {
-    changeIcon(this.files);
+    changeIcon(window.files);
 }, false);
 
 changeIcon = (files) => {
@@ -270,7 +273,7 @@ changeIcon = (files) => {
         d.getElementById('iconHueSlider').style.cursor = "initial";
         d.getElementById("iconCInputX").style.cursor = "initial";
         d.getElementById('iconCInputY').style.cursor = "initial";
-        this.iconChanged = true
+        window.iconChanged = true
         if (season == "2") {
             krunkerWings.href.baseVal = wingsNoIcon
             krunkerWings.href.animVal = wingsNoIcon
@@ -288,7 +291,7 @@ changeIcon = (files) => {
 
 changeIconScale = () => {
     let value = d.getElementById("iconSInput").value
-    if (this.iconChanged == true) {
+    if (window.iconChanged == true) {
         /*let x = 541.5 * (1 - (value - 1)) //541.5 - (value * 100 * (1 + ((value - 1)/2)));
         console.log(x)*/
         let y = 240 + (100 * (1 + (1 - value))); //240 + (100 * ((1 + (1 - value)) * value)); //240 + (100 * (1 + (1 - value))); //340
@@ -308,7 +311,7 @@ changeIconScale = () => {
 }
 
 changeIconCords = (xy) => {
-    if (this.iconChanged == true) {
+    if (window.iconChanged == true) {
         if (xy == "x") {
             //krunkerWingsIcon.setAttribute("x", d.getElementById('iconCInputX').value)
             krunkerWingsIcon.style.left = d.getElementById('iconCInputX').value + "px"
@@ -324,9 +327,9 @@ changeIconCords = (xy) => {
 }
 
 changeIconHue = () => {
-    if (this.iconChanged == true) {
-        this.iconHue = d.getElementById("iconHueInput").value
-        krunkerWingsIcon.style.filter = `hue-rotate(${iconHue - this.hue}deg)`
+    if (window.iconChanged == true) {
+        window.iconHue = d.getElementById("iconHueInput").value
+        krunkerWingsIcon.style.filter = `hue-rotate(${iconHue - window.hue}deg)`
         svgToImg(document.getElementById("svg"), input.value);
     } else {
         d.getElementById("iconHueInput").value = 0;
@@ -338,7 +341,7 @@ update3dWidth = (id) => {
     setTimeout(() => {
         var elem = document.getElementById(id)
         document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (elem.value).toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace(_3dVal.toString() + "px", (elem.value).toString()  + "px");
-        this._3dVal = elem.value;
+        window._3dVal = elem.value;
     }, 1);
 }
 
@@ -357,7 +360,7 @@ function changeSeason(val) {
     //krunkerWings.href.baseVal = wingsNoIcon
     //krunkerWings.href.animVal = wingsNoIcon
 
-    this.season = val;
+    window.season = val;
     if (val == "2") {
         if (krunkerWingsIcon.src == document.URL) {
             krunkerWings.href.animVal = wingsWithIcon
@@ -375,4 +378,12 @@ function changeSeason(val) {
             krunkerWings.href.baseVal = wingsS3NoIcon
         }
     }
+}
+
+updateHeightOffset = (id) => {
+    setTimeout(() => {
+        var elem = document.getElementById(id);
+        window.heightOffset = (elem.value) * -1;
+        document.getElementById("svg").getElementById("textOffsetHolder").style.transform = `translateY(${heightOffset}px)` //bottom = `${elem.value}px`
+    }, 1);
 }

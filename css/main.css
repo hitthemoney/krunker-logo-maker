@@ -436,3 +436,14 @@ input:checked+.slider:before {
     bottom: 16px;
     font-family: krunkerfont;
 }
+
+#tHeightInput {
+    left: 1px;
+    bottom: 18px;
+    float: none;
+    display: inline-block;
+}
+
+#tHeight {
+    margin-top: 10px;
+}

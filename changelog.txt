@@ -1,9 +1,12 @@
-1.2.0
+1.2.1
 
 Working On:
 - Adding more settings
 - Better text box
 - Fixing Bugs
+
+Update v1.2.1
+- Added a text height offset setting
 
 Update v1.2.0:
 - Added a drop shadow text option
