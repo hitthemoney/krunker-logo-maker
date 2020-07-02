@@ -259,7 +259,7 @@ function blobToDataURL(blob, callback) {
 }
 
 iconInput.addEventListener('change', function () {
-    changeIcon(window.files);
+    changeIcon(this.files);
 }, false);
 
 changeIcon = (files) => {
