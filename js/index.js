@@ -41,9 +41,9 @@ updatePreview = (updateText) => {
             usernamePath.textContent = "YOURNAME";
             usernamePathBG.textContent = "YOURNAME";
         }
-        document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal / (_3dVal / 20)).toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace(_3dVal.toString() + "px", (_3dVal / 2.5).toString() + "px");
+        //document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal / (_3dVal / 20)).toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace(_3dVal.toString() + "px", (_3dVal / 2.5).toString() + "px");
         svgToImg(document.getElementById("svg"), input.value);
-        document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
+        //document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
         if (updateText !== false) {
             let usernameBBox = usernamePath.getBBox();
             let width = usernameBBox.width
@@ -163,15 +163,17 @@ changeSize = () => {
         svgToImg(d.getElementById("svg"), input.value);
         let usernameBBox = usernamePath.getBBox();
         let width = usernameBBox.width * size
-        if (width >= 1280) document.getElementById("svg").setAttribute("width", `${width + 25}`)
+        if (width >= 1280) document.getElementById("svg").setAttribute("width", `${width + 50}`)
         else document.getElementById("svg").setAttribute("width", `1280`)
     }, 1);
 }
 
 function svgToImg(svg, name) {
     svg.style = `transform: scale(1); filter: hue-rotate(${hue}deg)`;
+    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal/2).toString() + "px" 
     var svgData = new XMLSerializer().serializeToString(svg);
-    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
+    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal).toString() + "px" 
+    //document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
     var svgData2 = new XMLSerializer().serializeToString(svg);
     svg.style = `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg`;
 
@@ -259,7 +261,7 @@ function blobToDataURL(blob, callback) {
 }
 
 iconInput.addEventListener('change', function () {
-    changeIcon(this.files);
+    changeIcon(window.files);
 }, false);
 
 changeIcon = (files) => {
