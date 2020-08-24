@@ -16,7 +16,7 @@ body {
     margin: 0;
     font-family: krunkerfont;
     overflow: hidden;
-    animation: animatedBackground 10s linear infinite; 
+    animation: animatedBackground 10s linear infinite;
 }
 
 @keyframes animatedBackground {
@@ -446,4 +446,14 @@ input:checked+.slider:before {
 
 #tHeight {
     margin-top: 10px;
+}
+
+#donate {
+    zoom: 0.9;
+    position: absolute;
+    bottom: 7px;
+    right: 7px;
+    box-shadow: 0 0 12px #ff5e00d9;
+    border: solid 1px #ff2600d9;
+    background-color: #dc7e67a6;
 }

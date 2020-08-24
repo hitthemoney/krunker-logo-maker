@@ -1,9 +1,13 @@
-1.2.2
+1.2.3
 
 Working On:
 - Adding more settings
 - Better text box
 - Fixing Bugs
+
+Update v1.2.3
+- Fixed Bugs
+- Added donate button
 
 Update v1.2.2
 - Fixed Bugs
