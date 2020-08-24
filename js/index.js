@@ -53,31 +53,35 @@ updatePreview = (updateText) => {
             if (width >= 1280) document.getElementById("svg").setAttribute("width", `${width + 25}`)
             else document.getElementById("svg").setAttribute("width", `1280`)
             if (boxWidth >= 1280) {
+                let size = 0.85;
                 textPath.setAttribute("d", `M 0 360 q ${width / 2} ${(width / 2) * 0.15625} ${width} 0`)
-                textHolder.setAttribute("transform", "translate(96 54) scale(0.85)")
+                textHolder.setAttribute("transform", `translate(96 54) scale(${size})`)
                 topWings.setAttribute("stroke-width", "20")
-                d.getElementById('sizeSlider').value = 0.85;
-                d.getElementById('sizeInput').value = 0.85
+                d.getElementById("sizeSlider").value = size;
+                d.getElementById("sizeInput").value = size;
             } else if (720 <= boxWidth && boxWidth <= 1280) {
-                textHolder.setAttribute("transform", "translate(0 7) scale(1)")
+                let size = 1;
+                textHolder.setAttribute("transform", `translate(0 7) scale(${size})`)
                 topWings.setAttribute("stroke-width", "20")
-                d.getElementById('sizeSlider').value = 1;
-                d.getElementById('sizeInput').value = 1;
+                d.getElementById("sizeSlider").value = size;
+                d.getElementById("sizeInput").value = size;
             } else if (480 <= boxWidth && boxWidth <= 720) {
-                textHolder.setAttribute("transform", "translate(-96 -45) scale(1.15)")
+                let size = 1.15
+                textHolder.setAttribute("transform", `translate(-96 -45) scale(${size})`)
                 topWings.setAttribute("stroke-width", "20")
-                d.getElementById('sizeSlider').value = 1.15;
-                d.getElementById('sizeInput').value = 1.15;
+                d.getElementById("sizeSlider").value = size;
+                d.getElementById("sizeInput").value = size;
             } else if (boxWidth <= 480) {
-                textHolder.setAttribute("transform", "translate(-192 -95) scale(1.3)")
+                let size = 1.3
+                textHolder.setAttribute("transform", "translate(-192 -95) scale(${size})")
                 topWings.setAttribute("stroke-width", "30")
-                d.getElementById('sizeSlider').value = 1.3;
-                d.getElementById('sizeInput').value = 1.3;
+                d.getElementById("sizeSlider").value = size;
+                d.getElementById("sizeInput").value = size;
             } else {
                 textHolder.setAttribute("transform", "translate(0 7) scale(1)")
                 topWings.setAttribute("stroke-width", "40")
-                d.getElementById('sizeSlider').value = 1;
-                d.getElementById('sizeInput').value = 1;
+                d.getElementById("sizeSlider").value = 1;
+                d.getElementById("sizeInput").value = 1;
             }
             if (startingPoint >= 130) {
                 let num = 0
