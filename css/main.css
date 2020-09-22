@@ -449,11 +449,20 @@ input:checked+.slider:before {
 }
 
 #donate {
+    box-shadow: 0 0 12px #ff5e00d9;
+    border: solid 1px #ff2600d9;
+    background-color: #dc7e67a6;
+}
+
+#discord {
+    box-shadow: 0 0 12px #2600ffd9;
+    border: solid 1px #6200ffd9;
+    background-color: #6f67dca6;
+}
+
+#bottom {
     zoom: 0.9;
     position: absolute;
     bottom: 7px;
     right: 7px;
-    box-shadow: 0 0 12px #ff5e00d9;
-    border: solid 1px #ff2600d9;
-    background-color: #dc7e67a6;
 }
