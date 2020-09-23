@@ -1,22 +1,23 @@
 @font-face {
-    font-family: krunkerfont;
-    src: url('./font2.ttf');
+    font-family: FFF Forward;
+    src: url("./font2.ttf");
 }
 
-html,
+/*html,*/
 body {
     background-color: #868686;
     padding: 0;
-    background-image: url(https://assets.krunker.io/textures/wall_0.png);
+    background-image: url("../img/bg.png");
     background-repeat: repeat;
     background-size: 300px 300px;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     margin: 0;
-    font-family: krunkerfont;
+    font-family: FFF Forward;
     overflow: hidden;
     animation: animatedBackground 10s linear infinite;
+    animation-play-state: paused;
 }
 
 @keyframes animatedBackground {
@@ -45,11 +46,11 @@ body {
     margin: 10px;
     width: 282.5px;
     /*height: min-content;*/
-    height: 300px;
+    height: 345px;
     /* transform: translateY(-50%); */
     text-align: center;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
     backdrop-filter: blur(10px);
     background-color: rgba(0, 0, 0, 0.35);
     /* border: solid 5px #fff; */
@@ -98,7 +99,7 @@ body {
 }
 
 .sliderVal {
-    font-family: "krunkerfont";
+    font-family: "FFF Forward";
     float: right;
     /* position: relative; */
     width: 30px;
@@ -122,7 +123,7 @@ body {
 #cardSpace {
     left: 5px;
     font-size: 50px;
-    font-family: krunkerfont;
+    font-family: FFF Forward;
     width: 100%;
     position: absolute;
     left: 50%;
@@ -134,7 +135,7 @@ body {
 
 #input {
     font-size: 16px;
-    font-family: krunkerfont;
+    font-family: FFF Forward;
     padding: 10px;
     background: #00000061;
     color: white;
@@ -148,7 +149,7 @@ body {
 #info {
     position: absolute;
     top: 375px;
-    font-family: krunkerfont;
+    font-family: FFF Forward;
     padding-top: 10px;
     width: 679px;
     left: 50%;
@@ -185,7 +186,7 @@ body {
     /* position: relative; */
     /* bottom: 25px; */
     /* padding-top: 10px; */
-    font-family: krunkerfont;
+    font-family: FFF Forward;
     backdrop-filter: blur(10px);
     font-size: 16px;
     /* height: 84px; */
@@ -219,6 +220,8 @@ body {
     margin-bottom: 45px;
     font-size: 1.65em;
     color: #fff;
+    /* position: sticky; */
+    /* top: 20px; */
 }
 
 .switch {
@@ -359,7 +362,7 @@ input:checked+.slider:before {
 #iconInput,
 #iconInput input {
     position: relative;
-    font-family: krunkerFont !important;
+    font-family: FFF Forward !important;
     bottom: 35px;
     left: 75px;
 }
@@ -434,7 +437,7 @@ input:checked+.slider:before {
 #season {
     position: relative;
     bottom: 16px;
-    font-family: krunkerfont;
+    font-family: FFF Forward;
 }
 
 #tHeightInput {
@@ -455,9 +458,9 @@ input:checked+.slider:before {
 }
 
 #discord {
-    box-shadow: 0 0 12px #2600ffd9;
-    border: solid 1px #6200ffd9;
-    background-color: #6f67dca6;
+    box-shadow: 0 0 12px #8000ffd9;
+    border: solid 1px #8000ffd9;
+    background-color: #8a67dca6;
 }
 
 #bottom {
@@ -465,4 +468,65 @@ input:checked+.slider:before {
     position: absolute;
     bottom: 7px;
     right: 7px;
+}
+
+.settSubHeader {
+    float: left;
+    color: rgba(200, 200, 200, 0.5);
+    margin-bottom: 28px;
+    margin-left: 7px;
+    clear: both;
+    margin-top: -20px;
+    text-decoration: underline;
+}
+
+#bgAnimSlider {
+    left: 7px;
+    top: -15px;
+    margin-bottom: 5px;
+}
+
+#logoType {
+    position: relative;
+    left: 5px;
+    bottom: 3px;
+}
+
+* {
+    font-family: FFF Forward;
+}
+
+#updateCanvasPreview {
+    margin-bottom: 15px;
+    margin-top: -15px;
+    box-shadow: 0 0 12px #00a6ffd9;
+    border: solid 1px #005effd9;
+    background-color: #67a5dca6;
+    transform-origin: center;
+    transform: scale(0.9);
+}
+
+#canvasHue {
+    margin-left: 4px;
+}
+
+#settResizers {
+    pointer-events: none;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 6px;
+    top: 0;
+}
+
+#bottomSettResizer {
+    height: 5px;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: calc(100% - 2.5px);
+    cursor: ns-resize;
+    pointer-events: all;
 }

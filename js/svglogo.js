@@ -8,31 +8,15 @@ var usernamePathBG = d.getElementById("usernamePathBG"),
     textPath = d.getElementById("textPath"),
     topWings = d.getElementById("topWings"),
     topWings2 = d.getElementById("topWings2"),
-    settingsH = d.getElementById("settingsHeader"),
-    settings = d.getElementById("settings"),
     iconInput = d.getElementById("iconInput"),
     krunkerWings = d.getElementById("krunkerWings"),
     krunkerWingsIcon = d.getElementById("krunkerWingsIcon");
 window.hue = 0;
 window.iconHue = 0;
-window.settingsClosed = false;
-window.popups = ["changelog", "download"];
 window._3dVal = 50;
 window.season = "2";
 window.heightOffset = 0;
 
-;
-
-(async function () {
-    var version = document.getElementById("version"),
-        changelog = await fetch("https://hitthemoney.com/krunker-logo-maker/changelog.txt"),
-        changelogText = await changelog.text(),
-        changelog2 = document.getElementById("changelog")
-    version.innerHTML = changelogText.slice(0, 6)
-    changelog2.innerHTML = changelogText
-})();
-
-svgToImg(document.getElementById("svg"), "YOURNAME");
 updatePreview = (updateText) => {
     setTimeout(() => {
         usernamePath.textContent = input.value.toUpperCase();
@@ -54,7 +38,7 @@ updatePreview = (updateText) => {
             else document.getElementById("svg").setAttribute("width", `1280`)
             if (boxWidth >= 1280) {
                 let size = 0.85;
-                textPath.setAttribute("d", `M 0 360 q ${width / 2} ${(width / 2) * 0.15625} ${width} 0`)
+                textPath.setAttribute("d", `M 0 360 q ${width / 2} ${(width / 2) * slope} ${width} 0`)
                 textHolder.setAttribute("transform", `translate(96 54) scale(${size})`)
                 topWings.setAttribute("stroke-width", "20")
                 d.getElementById("sizeSlider").value = size;
@@ -73,7 +57,7 @@ updatePreview = (updateText) => {
                 d.getElementById("sizeInput").value = size;
             } else if (boxWidth <= 480) {
                 let size = 1.3
-                textHolder.setAttribute("transform", "translate(-192 -95) scale(${size})")
+                textHolder.setAttribute("transform", `translate(-192 -95) scale(${size})`)
                 topWings.setAttribute("stroke-width", "30")
                 d.getElementById("sizeSlider").value = size;
                 d.getElementById("sizeInput").value = size;
@@ -119,7 +103,7 @@ updatePreview = (updateText) => {
             if (boxWidth >= 1280) {
                 topWings2.style.display = ""
                 textPath.setAttribute("d",
-                    `M -${(width - 1280) / 2} 360 q ${width / 2} -${(width / 2) * 0.15625} ${width} 0`
+                    `M -${(width - 1280) / 2} 360 q ${width / 2} -${(width / 2) * slope} ${width} 0`
                 )
             } else {
                 topWings2.style.display = "none"
@@ -129,9 +113,13 @@ updatePreview = (updateText) => {
 
 }
 
-changeHue = () => {
+changeHue = (hue = d.getElementById("hueInput").value, updateInputs = false) => {
     //setTimeout(() => {
-    window.hue = d.getElementById("hueInput").value
+    if (updateInputs) {
+        d.getElementById("hueInput").value = hue;
+        d.getElementById("hueSlider").value = hue;
+    }
+    window.hue = hue;
     d.getElementById("svg").style =
         `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg)`
     krunkerWingsIcon.style.filter =
@@ -143,7 +131,7 @@ changeHue = () => {
 changeStroke = () => {
     //setTimeout(() => {
     window.strokeW = d.getElementById("strokeInput").value
-    d.getElementById("usernameBG").setAttribute("stroke-width", `${strokeW*2}px`)
+    d.getElementById("usernameBG").setAttribute("stroke-width", `${strokeW * 2}px`)
     svgToImg(d.getElementById("svg"), input.value);
     //}, 1);
 }
@@ -174,9 +162,9 @@ changeSize = () => {
 
 function svgToImg(svg, name) {
     svg.style = `transform: scale(1); filter: hue-rotate(${hue}deg)`;
-    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal/2).toString() + "px" 
+    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal / 2).toString() + "px"
     var svgData = new XMLSerializer().serializeToString(svg);
-    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal).toString() + "px" 
+    document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + (_3dVal).toString() + "px"
     //document.getElementById("svg").getElementById("usernameBG").style.textShadow = "rgb(16, 16, 16) 0px " + _3dVal.toString() + "px" //document.getElementById("svg").getElementById("usernameBG").style.textShadow.replace((Math.round((_3dVal / 2.5) * 10000) / 10000).toString() + "px", _3dVal.toString() + "px");
     var svgData2 = new XMLSerializer().serializeToString(svg);
     svg.style = `transform: scale(0.5) translate(0%, -50%); filter: hue-rotate(${hue}deg`;
@@ -210,58 +198,12 @@ function svgToImg(svg, name) {
     };
 };
 
-function checkSettings(event) {
-    switch (event) {
-        case "out":
-            if (settingsClosed == false) {
-                settingsH.innerHTML = "Settings";
-            }
-            break;
-        case "hover":
-            if (settingsClosed == false) {
-                settingsH.innerHTML = "Close Settings";
-            }
-            break;
-        case "click":
-            if (settingsClosed == false) {
-                settingsClosed = true;
-                settings.style = "height: 78px; overflow: hidden;";
-                settingsH.innerHTML = "Show Settings";
-            } else if (settingsClosed == true) {
-                settingsClosed = false;
-                settings.style = "";
-                settingsH.innerHTML = "Settings";
-            }
-            break;
-    }
-}
-
 function textBox(checked) {
     if (checked == true) {
         pathBG.style.display = "";
     } else if (checked == false) {
         pathBG.style.display = "none";
     };
-}
-
-function showChangelog() {
-    let changelogHolder = document.getElementById("changelogHolder");
-    changelogHolder.style.display = "block";
-    document.getElementById("popupHolder").style.display = "block";
-}
-
-function hidePopup() {
-    clearInterval(window.interval);
-    for (num = 0; num < popups.length; num++) document.getElementById(popups[num] + "Holder").style.display = "none"
-    document.getElementById("popupHolder").style.display = "none"
-}
-
-function blobToDataURL(blob, callback) {
-    var fr = new FileReader();
-    fr.onload = function (e) {
-        callback(e.target.result);
-    }
-    fr.readAsDataURL(blob);
 }
 
 iconInput.addEventListener('change', function () {

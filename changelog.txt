@@ -1,9 +1,15 @@
-1.2.4
+1.3.0
 
 Working On:
 - Adding more settings
 - Better text box
 - Fixing Bugs
+
+Update v1.3.0
+- Added new logo making method! (canvas)
+- New method has hue setting
+- Settings container can now be resized
+- Added an option to remove the background animation
 
 Update v1.2.4
 - Added discord bot button
