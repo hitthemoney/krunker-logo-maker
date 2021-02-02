@@ -124,6 +124,7 @@ class LogoAnimation {
         this.gl = canvas.getContext("webgl");
         this.frame = 0;
         this.isAnimating = false;
+        this.onAnimationFinished = () => {};
     }
 
     init() {
@@ -265,6 +266,10 @@ class LogoAnimation {
 
             gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
 
+            if (this.frame > 60 * 6) {
+                this.onAnimationFinished();
+            }
+
             this.frame++;
         }
     }
@@ -345,6 +350,7 @@ let stopRenderAnimation = () => {
 }
 
 window.stopRenderAnimation = stopRenderAnimation;
+animator.onAnimationFinished = stopRenderAnimation;
 
 let renderAnimation = () => {
     let pngDownload = document.getElementById("downloadPng");
@@ -359,9 +365,6 @@ let renderAnimation = () => {
         animator.frame = 0;
         animator.startAnimation();
         recorder.startRecording();
-        setTimeout(() => {
-            stopRenderAnimation();
-        }, 6000);
     }
 }
 
