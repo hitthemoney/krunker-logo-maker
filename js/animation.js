@@ -268,7 +268,7 @@ class LogoAnimation {
 
             if (this.frame > 60 * 6) {
                 this.onAnimationFinished();
-            }
+            } 
 
             this.frame++;
         }
