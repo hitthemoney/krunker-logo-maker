@@ -300,12 +300,6 @@ downloadImage = (format) => {
     document.getElementById("download" + format).click();
 }
 
-function showDownloadPopup() {
-    let downloadHolder = document.getElementById("downloadHolder");
-    downloadHolder.style.display = "block";
-    document.getElementById("popupHolder").style.display = "block";
-}
-
 function changeSeason(val) {
 
     //krunkerWings.href.baseVal = wingsNoIcon

@@ -318,10 +318,25 @@ input:checked+.slider:before {
     margin: auto;
     height: 300px;
     width: 500px;
-    border: solid 5px white;
+    /*border: solid 5px white;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, .65);
+    background-color: rgba(0, 0, 0, .65);*/
+    color: white;
+    border: none;
+    backdrop-filter: blur(7.5px);
+    background-color: rgba(0, 0, 0, .35);
+    min-width: 26px;
+    box-shadow: 0 0 12px black;
+    border-radius: 6px;
     overflow-y: scroll;
+}
+
+/*#changelogHolder *:not(:nth-last-child()) {
+    margin-bottom: 5px;
+}*/
+
+#changelogHolder > span {
+    line-height: 1.6;
 }
 
 #changelog {
@@ -515,7 +530,7 @@ input:checked+.slider:before {
     position: absolute;
     bottom: 7px;
     right: 7px;
-    /* z-index: -9999; */
+    /* z-index: -9999; Moved this to JavaScript */
 }
 
 .settSubHeader {

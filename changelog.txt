@@ -1,4 +1,4 @@
-1.4.1
+1.4.2
 
 Working On:
 - Adding more settings
@@ -6,6 +6,10 @@ Working On:
 - More and better animations
 - More export formats for animation
 - Fixing Bugs
+
+Update v1.4.2
+- Bug Fixes
+- Changed changelog CSS/Styles
 
 Update v1.4.1
 - Added more download options for the canvas method
@@ -50,7 +54,7 @@ Update v1.1.0:
 - Added an icon image (replaces the skull on the logo with your own image)
 - Added icon scale, icon positioning, and icon hue
 
-Update v1.0.0:
+Update v1.0.1:
 - Bug fixes
 - New UI (Thanks to Hoodgail!)
 

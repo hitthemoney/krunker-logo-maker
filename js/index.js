@@ -70,6 +70,14 @@ function hidePopup() {
     for (let num = 0; num < popups.length; num++) document.getElementById(popups[num] + "Holder").style.display = "none"
     document.getElementById("popupHolder").style.display = "none"
     if (window.stopRenderAnimation) window.stopRenderAnimation();
+    document.getElementById("bottom").style.zIndex = "";
+}
+
+function showDownloadPopup() {
+    let downloadHolder = document.getElementById("downloadHolder");
+    downloadHolder.style.display = "block";
+    document.getElementById("popupHolder").style.display = "block";
+    document.getElementById("bottom").style.zIndex = -9999;
 }
 
 function blobToDataURL(blob, callback) {
