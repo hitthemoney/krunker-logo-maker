@@ -515,7 +515,7 @@ input:checked+.slider:before {
     position: absolute;
     bottom: 7px;
     right: 7px;
-    z-index: -9999;
+    /* z-index: -9999; */
 }
 
 .settSubHeader {
