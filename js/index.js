@@ -121,18 +121,20 @@ changeLogoType = (val) => {
         downloadBtn.onclick = () => {
             eval(downloadBtnOnclick);
         };
+        d.getElementById("downloadSvgBtn").style.display = ""
         input.onkeydown = updatePreview;
     } else if (val === "canvas") {
         canvasSettings.style.display = "block";
         svgSettings.style.display = "none";
         settings.style.height = settContainer.getBoundingClientRect().height + "px";
-        downloadBtn.innerHTML = "Download as PNG";
+        downloadBtn.innerHTML = "Download Logo";
+        d.getElementById("downloadSvgBtn").style.display = "none"
         downloadBtn.onclick = () => {
-            window.canvasLm.download();
+            // window.canvasLm.download();
+            window.showDownloadPopup();
+            canvasLm.updateDownloads();
         }
-        input.onkeydown = () => {
-
-        };
+        input.onkeydown = () => {};
 
         let a = b => d.getElementById(b);
 

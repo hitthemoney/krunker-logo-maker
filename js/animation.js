@@ -85,7 +85,7 @@ Try Firefox 29 or later, or Chrome 47 or later, with Enable experimental Web Pla
     }
 
     stopRecording() {
-        this.mediaRecorder.stop();
+        this.mediaRecorder?.stop();
 
         this.canvas.style.display = "none";
         this.video.style.display = "";
@@ -134,7 +134,7 @@ class LogoAnimation {
             canvas
         } = this;
 
-        this.updateTexture();
+        // this.updateTexture();
 
         let vertices = [
             -1, 1, 0.0,
@@ -307,12 +307,15 @@ class LogoAnimation {
 
     startAnimation() {
         this.isAnimating = true;
+        // let animationTimeout;
 
         let animationLoop = () => {
             if (this.isAnimating) {
                 this.animate();
+                // animationTimeout = setTimeout(animationLoop, 1000 / 60);
                 requestAnimationFrame(animationLoop);
             } else {
+                // clearTimeout(animationTimeout);
                 cancelAnimationFrame(animationLoop)
             }
         }
@@ -326,7 +329,7 @@ class LogoAnimation {
 }
 
 const recorder = new CanvasRecorder(animCanvas, animVideo);
-const animator = new LogoAnimation(animCanvas, new Image());
+const animator = new LogoAnimation(animCanvas, new Image(window.smallImgB64));
 animator.init();
 
 let downloadAnimation = () => {

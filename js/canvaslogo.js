@@ -135,6 +135,18 @@ class LogoMaker {
         canvasW.remove();
     }
 
+    updateDownloads() {
+        ["png", "jpg"].map(format => {
+            format = format[0].toUpperCase() + format.slice(1);
+            let anchor = document.getElementById("download" + format);
+            if (anchor) {
+                anchor.style.display = "none";
+                anchor.download = `${this.value}'s_Krunker_Logo.${format.toLowerCase()}`;
+                anchor.href = this.canvas.toDataURL("image/" + format.toLowerCase());
+            }
+        })
+    }
+
     download(imageType = "png") {
         let anchor = document.createElement("a");
         anchor.style.display = "none";

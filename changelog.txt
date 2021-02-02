@@ -1,4 +1,4 @@
-1.4.0
+1.4.1
 
 Working On:
 - Adding more settings
@@ -6,6 +6,10 @@ Working On:
 - More and better animations
 - More export formats for animation
 - Fixing Bugs
+
+Update v1.4.1
+- Added more download options for the canvas method
+- Bug Fixes
 
 Update v1.4.0
 - Added animations! (currently only WebM export is available)
