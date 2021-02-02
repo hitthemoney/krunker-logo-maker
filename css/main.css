@@ -462,7 +462,8 @@ input:checked+.slider:before {
 #animationResult,
 #animationCanvas {
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.65);
-    background-color: rgba(0, 0, 0, .65);
+    background-color: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(3px);
     border-radius: 5px;
     margin-bottom: 20px;
     width: 640px;
