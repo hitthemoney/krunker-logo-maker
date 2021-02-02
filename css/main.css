@@ -408,20 +408,66 @@ input:checked+.slider:before {
     top: -17.5px
 }
 
-#downloadHolder {
+.btnHolder {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -50%);
     padding: 10px;
     display: block;
     margin: auto;
     height: max-content;
+    max-width: 1080px;
+    width: 95%;
+    text-align: center; 
+    pointer-events: none;
+}
+
+.btnHolder * {
+    pointer-events: all;
+}
+
+#downloadHolder {
+    /* moved most to .btnHolder */
+    transform: translate(-50%, -60%);
+    /* 
     width: max-content;
-    /*border: solid 5px white;
+    border: solid 5px white;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, .65);
-    overflow-y: scroll;*/
+    overflow-y: scroll;
+    */
+}
+
+#animationHolder {
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+#animationResult,
+#animationCanvas {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, .65);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 640px;
+    height: 360px;
+    display: inline;
+    pointer-events: all;
+}
+
+#animationContainer {
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+#animationBtnsContainer {
+    pointer-events: none;
+}
+
+#downloadHolder > button {
+    margin-bottom: 10px;
 }
 
 .download {
@@ -438,6 +484,7 @@ input:checked+.slider:before {
     position: relative;
     bottom: 16px;
     font-family: FFF Forward;
+    max-width: 160px;
 }
 
 #tHeightInput {
@@ -468,6 +515,7 @@ input:checked+.slider:before {
     position: absolute;
     bottom: 7px;
     right: 7px;
+    z-index: -9999;
 }
 
 .settSubHeader {
@@ -499,9 +547,14 @@ input:checked+.slider:before {
 #updateCanvasPreview {
     margin-bottom: 15px;
     margin-top: -15px;
+    /*
     box-shadow: 0 0 12px #00a6ffd9;
     border: solid 1px #005effd9;
     background-color: #67a5dca6;
+    */
+    box-shadow: 0 0 12px #0099ffd9;
+    border: solid 1px #00f7ffd9;
+    background-color: #67b1dca6;
     transform-origin: center;
     transform: scale(0.9);
 }

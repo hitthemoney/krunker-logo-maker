@@ -13,7 +13,7 @@ var input = d.getElementById("input"),
     settContainer = d.getElementById("settContainer");
 
 window.settingsClosed = false;
-window.popups = ["changelog", "download"];
+window.popups = ["changelog", "download", "animation"];
 window.bgAnim = (localStorage.getItem("bgAnim") === "false") ? false : true;
 window.logoType = "svg";
 
@@ -21,7 +21,7 @@ window.logoType = "svg";
 
 (async function () {
     var version = document.getElementById("version"),
-        changelog = await fetch("https://hitthemoney.com/krunker-logo-maker/changelog.txt"),
+        changelog = await fetch("./changelog.txt"),
         changelogText = await changelog.text(),
         changelog2 = document.getElementById("changelog")
     version.innerHTML = changelogText.slice(0, 6)
@@ -67,8 +67,9 @@ function showChangelog() {
 
 function hidePopup() {
     clearInterval(window.interval);
-    for (num = 0; num < popups.length; num++) document.getElementById(popups[num] + "Holder").style.display = "none"
+    for (let num = 0; num < popups.length; num++) document.getElementById(popups[num] + "Holder").style.display = "none"
     document.getElementById("popupHolder").style.display = "none"
+    if (window.stopRenderAnimation) window.stopRenderAnimation();
 }
 
 function blobToDataURL(blob, callback) {
@@ -171,4 +172,4 @@ makeSettingsResizable = () => {
     }
 }
 
-makeSettingsResizable('.resizable')
+makeSettingsResizable(".resizable")

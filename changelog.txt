@@ -1,9 +1,15 @@
-1.3.0
+1.4.0
 
 Working On:
 - Adding more settings
 - Better text box
+- More and better animations
+- More export formats for animation
 - Fixing Bugs
+
+Update v1.4.0
+- Added animations! (currently only WebM export is available)
+- Fixed Bugs
 
 Update v1.3.0
 - Added new logo making method! (canvas)

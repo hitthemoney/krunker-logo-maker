@@ -17,6 +17,9 @@ window._3dVal = 50;
 window.season = "2";
 window.heightOffset = 0;
 
+krunkerWings.href.animVal = wingsWithIcon
+krunkerWings.href.baseVal = wingsWithIcon
+
 updatePreview = (updateText) => {
     setTimeout(() => {
         usernamePath.textContent = input.value.toUpperCase();
